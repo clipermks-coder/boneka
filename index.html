@@ -1,1 +1,367 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐻 bear cinta · foto love bertebaran</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #ffdde1 0%, #f9c9e7 100%);
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 16px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .card {
+            max-width: 550px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 60px 60px 40px 40px;
+            box-shadow: 0 30px 45px rgba(190, 80, 120, 0.25),
+                        0 10px 20px rgba(0,0,0,0.1);
+            padding: 32px 24px 40px 24px;
+            border: 2px solid rgba(255,255,240,0.7);
+            transition: all 0.2s ease;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: 600;
+            font-size: 2.1rem;
+            letter-spacing: -0.5px;
+            color: #9f4f6b;
+            text-shadow: 3px 3px 0 #ffe2f0;
+            margin-top: 0;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            filter: drop-shadow(0 4px 6px #fbaac3);
+        }
+
+        h1 span {
+            font-size: 2.8rem;
+            transform: rotate(3deg);
+            display: inline-block;
+        }
+
+        .bear-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0 28px 0;
+            cursor: pointer;
+            filter: drop-shadow(0 15px 18px #ed9eb6);
+            transition: transform 0.15s ease;
+        }
+
+        .bear-container:active {
+            transform: scale(0.96);
+        }
+
+        .bear-svg {
+            width: 100%;
+            max-width: 340px;
+            height: auto;
+            transition: filter 0.2s;
+        }
+
+        .bear-svg:hover #face-bear {
+            filter: drop-shadow(0 0 8px #ffc1cc);
+        }
+
+        .instruction {
+            font-size: 1.3rem;
+            background: #ffecf0ee;
+            padding: 10px 28px;
+            border-radius: 50px;
+            color: #ac4f73;
+            font-weight: 500;
+            border: 2px dashed #f7a7c3;
+            margin-top: 4px;
+            backdrop-filter: blur(2px);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 0 #e1a5b8;
+        }
+
+        .instruction span {
+            font-size: 1.6rem;
+        }
+
+        .love-stage {
+            background: rgba(255, 245, 250, 0.7);
+            border-radius: 60px 60px 30px 30px;
+            padding: 25px 16px;
+            margin-top: 25px;
+            border: 3px solid white;
+            box-shadow: inset 0 2px 12px #ffb7c5, 0 12px 18px -8px rgba(200,100,130,0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .love-counter {
+            background: #ffebf2;
+            border-radius: 80px;
+            padding: 15px 30px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #d43f73;
+            box-shadow: 0 8px 0 #f59ebe;
+            border: 3px solid white;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .love-note {
+            background: #fee;
+            border-radius: 40px;
+            padding: 16px 25px;
+            font-size: 1.3rem;
+            text-align: center;
+            color: #a13e5e;
+            border: 3px solid #ffbfd5;
+            box-shadow: 0 6px 0 #f3b0c8;
+            width: 100%;
+            max-width: 300px;
+            font-weight: 600;
+        }
+
+        /* style untuk foto love yang bertebaran */
+        .floating-photo-love {
+            position: fixed;
+            pointer-events: none;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 0 20px #ff1493, 0 10px 20px rgba(0,0,0,0.3);
+            z-index: 9999;
+            animation: floatLovePhoto 2.8s ease-out forwards;
+            filter: drop-shadow(0 0 10px #ff69b4);
+        }
+
+        @keyframes floatLovePhoto {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg) scale(0.5);
+            }
+            50% {
+                opacity: 0.9;
+                transform: translateY(-120px) rotate(360deg) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-250px) rotate(720deg) scale(0.8);
+            }
+        }
+
+        .bear-click-hint {
+            background: #ffd9e8;
+            border-radius: 30px;
+            padding: 6px 18px;
+            color: #a53860;
+            font-size: 1rem;
+            border: 1px solid white;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 18px;
+            color: #cc7a9a;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- container untuk foto-foto love yang bertebaran -->
+    <div id="floating-photo-container" style="position: fixed; top:0; left:0; width:100%; height:100%; pointer-events: none; z-index:9999;"></div>
+
+    <div class="card">
+        <h1>
+            <span>🧸</span>  boneka bear  <span>🧸</span>
+        </h1>
+        
+        <div class="bear-container" id="clickableBear">
+            <div class="bear-click-hint">⬇️  pencet aku ya  ⬇️</div>
+            <!-- SVG boneka beruang -->
+            <svg class="bear-svg" viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg" id="face-bear">
+                <!-- telinga -->
+                <circle cx="80" cy="55" r="32" fill="#B58B71" stroke="#6F4F3A" stroke-width="5"/>
+                <circle cx="220" cy="55" r="32" fill="#B58B71" stroke="#6F4F3A" stroke-width="5"/>
+                <!-- dalam telinga -->
+                <circle cx="80" cy="55" r="18" fill="#FAD5C0" stroke="#8F5E48" stroke-width="3"/>
+                <circle cx="220" cy="55" r="18" fill="#FAD5C0" stroke="#8F5E48" stroke-width="3"/>
+                <!-- kepala -->
+                <circle cx="150" cy="120" r="85" fill="#C69B7D" stroke="#6F4F3A" stroke-width="7"/>
+                <!-- moncong putih -->
+                <ellipse cx="150" cy="145" rx="48" ry="38" fill="#FDE9E0" stroke="#B48262" stroke-width="4"/>
+                <!-- hidung hitam -->
+                <circle cx="150" cy="155" r="14" fill="#3D2B1F" stroke="#4A2C1A" stroke-width="3"/>
+                <!-- mata -->
+                <circle cx="115" cy="100" r="14" fill="#1E1E1E" stroke="#281A0E" stroke-width="3"/>
+                <circle cx="185" cy="100" r="14" fill="#1E1E1E" stroke="#281A0E" stroke-width="3"/>
+                <!-- sorot mata putih -->
+                <circle cx="110" cy="93" r="4" fill="white"/>
+                <circle cx="180" cy="93" r="4" fill="white"/>
+                <!-- pipi blush -->
+                <circle cx="100" cy="135" r="14" fill="#F9A8A8" opacity="0.6"/>
+                <circle cx="200" cy="135" r="14" fill="#F9A8A8" opacity="0.6"/>
+                <!-- mulut senyum -->
+                <path d="M130 170 Q150 190 170 170" stroke="#5A3E2B" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <!-- badan (dasi / hiasan love kecil) -->
+                <path d="M150 190 L140 220 L160 220 Z" fill="#D96C8C" stroke="#A13F5E" stroke-width="3"/>
+                <circle cx="150" cy="208" r="12" fill="#FFB6C1" stroke="#B34E71" stroke-width="2"/>
+                <text x="143" y="215" font-size="16" fill="#B32D5E" font-weight="bold" style="font-family: 'Segoe UI';">❤️</text>
+            </svg>
+        </div>
+
+        <!-- area counter love -->
+        <div class="love-stage">
+            <div class="love-counter" id="loveCounter">
+                <span>❤️</span> <span id="clickCount">0</span>
+            </div>
+            <div class="love-note" id="loveMessage">
+                pencet bear biar fotomu bertebaran ✨
+            </div>
+        </div>
+        
+        <footer>
+            ✨ setiap pencet bear → fotomu bertebaran ✨
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            // URL foto kamu (LANGSUNG DARI IMGBB)
+            const yourPhotoUrl = "https://i.ibb.co.com/DPGFVNzd/IMG-20260220-WA0004.jpg";
+            
+            let clickCount = 0;
+            const bearEl = document.getElementById('clickableBear');
+            const clickSpan = document.getElementById('clickCount');
+            const loveMsg = document.getElementById('loveMessage');
+            const floatingContainer = document.getElementById('floating-photo-container');
+
+            // TEST: cek apakah foto bisa di-load
+            const testImg = new Image();
+            testImg.src = yourPhotoUrl;
+            testImg.onload = function() {
+                console.log('Foto berhasil di-load!');
+                loveMsg.innerText = '✅ foto siap! pencet bear';
+            };
+            testImg.onerror = function() {
+                console.log('Foto gagal di-load!');
+                loveMsg.innerText = '⚠️ foto error, cek URL';
+            };
+
+            // fungsi untuk bikin foto love bertebaran
+            function spawnFloatingPhotos(count = 10) {
+                for (let i = 0; i < count; i++) {
+                    const floatingPhoto = document.createElement('img');
+                    floatingPhoto.className = 'floating-photo-love';
+                    floatingPhoto.src = yourPhotoUrl; // pakai foto yang sama
+                    floatingPhoto.alt = "foto love";
+                    floatingPhoto.crossOrigin = "anonymous"; // biar ga diblokir
+                    
+                    // posisi awal di sekitar bear
+                    const rect = bearEl.getBoundingClientRect();
+                    const baseX = rect.left + rect.width / 2 + (Math.random() * 200 - 100);
+                    const baseY = rect.top + rect.height / 2 - 20 + (Math.random() * 150 - 75);
+                    
+                    floatingPhoto.style.left = baseX + 'px';
+                    floatingPhoto.style.top = baseY + 'px';
+                    
+                    // ukuran bervariasi (50px - 110px)
+                    const size = Math.floor(Math.random() * 60) + 60;
+                    floatingPhoto.style.width = size + 'px';
+                    floatingPhoto.style.height = size + 'px';
+                    
+                    // rotasi acak
+                    floatingPhoto.style.transform = `rotate(${Math.random() * 60 - 30}deg)`;
+                    
+                    // animasi yang berbeda-beda
+                    const duration = (Math.random() * 1.5 + 2).toFixed(2);
+                    floatingPhoto.style.animation = `floatLovePhoto ${duration}s ease-out forwards`;
+                    
+                    floatingContainer.appendChild(floatingPhoto);
+
+                    // hapus setelah animasi selesai
+                    setTimeout(() => {
+                        if (floatingPhoto.parentNode) floatingPhoto.remove();
+                    }, duration * 1000 + 200);
+                }
+            }
+
+            // fungsi saat bear dipencet
+            function handleBearClick(e) {
+                e.stopPropagation();
+                
+                // 1. update jumlah klik
+                clickCount++;
+                clickSpan.innerText = clickCount;
+
+                // 2. update pesan
+                if (clickCount === 1) {
+                    loveMsg.innerText = 'pertama pencet! fotomu bertebaran 💘';
+                } else if (clickCount === 5) {
+                    loveMsg.innerText = 'udah 5 kali! love makin banyak 💖';
+                } else if (clickCount % 10 === 0) {
+                    loveMsg.innerText = `wih ${clickCount} kali! fotomu dimana-mana 💞`;
+                } else {
+                    loveMsg.innerText = 'foto cewekku bertebaran 💕';
+                }
+
+                // 3. MUNCULIN FOTO YANG BERTEBARAN (LANGSUNG 15 FOTO)
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        spawnFloatingPhotos(1);
+                    }, i * 50); // muncul bertahap biar ga kaget
+                }
+
+                // 4. animasi bear
+                bearEl.style.transform = 'scale(0.94)';
+                setTimeout(() => {
+                    bearEl.style.transform = 'scale(1)';
+                }, 150);
+            }
+
+            // pasang event listener
+            bearEl.addEventListener('click', handleBearClick);
+            bearEl.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                handleBearClick(e);
+            }, { passive: false });
+
+            // inisialisasi
+            clickSpan.innerText = '0';
+        })();
+    </script>
+</body>
+  </html>
